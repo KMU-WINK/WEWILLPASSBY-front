@@ -1,11 +1,21 @@
 import React from 'react';
 import Footer from "../components/common/Footer";
+import styled from 'styled-components';
 
 export default function Home(props) {
     return (
         <div>
-            지나갈게요 메인페이지 홈
+            <Wrap>
+
+            </Wrap>
             <Footer/>
         </div>
     );
 }
+
+const Wrap = styled.div`
+    width: 100vw;
+    height: 100vh;
+
+    background: #E8F6FF;
+`
