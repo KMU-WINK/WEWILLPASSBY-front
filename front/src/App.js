@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import Comment from "./pages/Comment";
 import Testing from "./components/common/Post"
+import Community from './pages/Community';
 
 const mainStyle = {
     margin: '0 auto',
@@ -22,6 +23,7 @@ export default function App() {
             <Route exact path="/mypage" component={MyPage}/>
             <Route exact path="/comment" component={Comment}/>
             <Route exact path="/testing" component={Testing}/>
+            <Route exact path="/community" component={Community}/>
         </Router>
     </div>
   );
