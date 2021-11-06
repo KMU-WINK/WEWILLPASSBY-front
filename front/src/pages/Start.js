@@ -11,8 +11,8 @@ export default function Start(props) {
             <TitleWrap>
                 <Title/>
             </TitleWrap>
-            <MainImage/>  
-            
+            <MainImage/>
+
             <BottomWrap>
                 <KakaoButton>카카오 로그인</KakaoButton>
                 <EmailButton>이메일 로그인</EmailButton>
