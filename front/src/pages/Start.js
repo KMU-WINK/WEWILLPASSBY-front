@@ -1,5 +1,5 @@
 import React from 'react';
-//import KakaoLogin from 'react-kakao-login';
+import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
 
 import title from '../images/start/title.svg';
