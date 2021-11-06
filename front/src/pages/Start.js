@@ -73,7 +73,7 @@ const KakaoButton = styled.div`
     font-family: Roboto;
     font-style: normal;
     font-weight: medium;
-    font-size: 6vw;
+    font-size: 1.5em;
     line-height: 21px;
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@ const EmailButton = styled.div`
     font-family: Roboto;
     font-style: normal;
     font-weight: medium;
-    font-size: 6vw;
+    font-size: 1.5em;
     line-height: 21px;
     display: flex;
     align-items: center;
