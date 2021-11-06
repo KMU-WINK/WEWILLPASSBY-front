@@ -1,4 +1,6 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+
 import communityIcon from "../../images/footer/communityIcon.png";
 import homeIcon from "../../images/footer/homeIcon.png";
 import mypageIcon from "../../images/footer/mypageIcon.png";
@@ -16,9 +18,12 @@ const footerCSS = {
 }
 
 export default function Footer(props) {
+
+    const history = useHistory();
+
     return (
         <div style={footerCSS}>
-            <div>
+            <div onClick={() => history.push('./home')}>
                 <img src={homeIcon} alt={""}/>
                 <p>홈</p>
             </div>
@@ -26,11 +31,11 @@ export default function Footer(props) {
                 <img src={mapmarkerIcon} alt={""}/>
                 <p>지도</p>
             </div>
-            <div>
+            <div onClick={() => history.push('./community')}>
                 <img src={communityIcon} alt={""}/>
                 <p>소통</p>
             </div>
-            <div>
+            <div onClick={() => history.push('./mypage')}>
                 <img src={mypageIcon} alt={""}/>
                 <p>정보</p>
             </div>
