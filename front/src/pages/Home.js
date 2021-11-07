@@ -21,7 +21,7 @@ export default function Home(props) {
     };
 
     return (
-        <div>
+        <Background>
             <Wrap>
                 <Header>
                     <Title/>
@@ -38,48 +38,58 @@ export default function Home(props) {
                 </Body>                
             </Wrap>
             <Footer/>
-        </div>
+        </Background>
     );
 }
 
-const Wrap = styled.div`
-    width: 100vw;
-    height: calc(100vh - 80px);
+const Background = styled.div`
+    width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+`;
+
+const Wrap = styled.div`
+    width: 100%;
+    height: calc(100% - 80px);
 
     background: #E8F6FF;
 `
 
 const Header = styled.div`
-    width: 100vw;
-    height: 8vh;
+    width: 100%;
+    height: 150px;
 
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
 `;
 
 const Title = styled.div`
-    width: 50vw;
-    height: 8vh;
+    width: 70%;
+    height: 60px;
+
+    margin-left: 45px;
 
     background: url(${name});
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 `;
 
 const Alarm = styled.div`
-    width: 8vw;
-    height: 4vh;
+    width: 20%;
+    height: 30px;
 
-    margin-top: 15px;
+    margin-bottom: 10px;
 
     background: url(${alarm});
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 `;
 
 const Body = styled.div`
-    margin: 5vh;
+    height: 600px;
+    margin: 25px 45px;
 `;
