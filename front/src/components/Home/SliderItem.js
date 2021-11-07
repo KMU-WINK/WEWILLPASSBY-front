@@ -12,10 +12,9 @@ export default function SliderItem(props) {
 }
 
 const Wrap = styled.div`    
-    width: 80vw;
-    height: 60vh;
+    width: 100%;
+    height: 500px;
 
-    margin-bottom: 3vh;
     text-align: center;
 
     background: #FFFFFF;

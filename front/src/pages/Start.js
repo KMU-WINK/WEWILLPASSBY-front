@@ -22,8 +22,8 @@ export default function Start(props) {
 }
 
 const Wrap = styled.div`
-    width: 100vw;
-    height: 100vh;    
+    width: 100%;
+    height: 100%;    
 
     position: relative;
 
@@ -35,19 +35,20 @@ const Wrap = styled.div`
 `
 
 const TitleWrap = styled.div`
-    margin: 20px;
+    margin: 70px 0 50px 40px;
 `;
 
 const Title = styled.div`
-    width: 44vw;
-    height: 14vh; 
+    width: 80%;
+    height: 100px; 
 
     background: url(${title});
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 `
 
 const MainImage = styled.div`
-    height: 75vh;
+    height: 620px;
     
     background: url(${main});
     background-size: cover;
@@ -55,10 +56,11 @@ const MainImage = styled.div`
 
 const BottomWrap = styled.div`
     width: 100%;
-    height: 21vh;   
+    height: 120px;   
     
     position: absolute;
-    bottom: 2vh;
+    bottom: 7%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,14 +68,14 @@ const BottomWrap = styled.div`
 `
 
 const KakaoButton = styled.div`
-    width: 85vw;
-    height: 6vh;
-    margin-bottom: 2vh;
+    width: 80%;
+    height: 50px;
+    margin-bottom: 20px;
 
     font-family: Roboto;
     font-style: normal;
     font-weight: medium;
-    font-size: 1.5em;
+    font-size: 1.3em;
     line-height: 21px;
     display: flex;
     align-items: center;
@@ -90,13 +92,13 @@ const KakaoButton = styled.div`
 `
 
 const EmailButton = styled.div`
-    width: 85vw;
-    height: 6vh;
+    width: 80%;
+    height: 50px;
     
     font-family: Roboto;
     font-style: normal;
     font-weight: medium;
-    font-size: 1.5em;
+    font-size: 1.3em;
     line-height: 21px;
     display: flex;
     align-items: center;
