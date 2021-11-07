@@ -3,9 +3,11 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  background-color: #E8F6FF;
 }
 
 .post-container {
+  background-color: white;
   display: flex;
   flex-direction: column;
   width: 89.74%;
@@ -62,6 +64,7 @@
     display: flex;
     padding : 3% 6.5%;
     flex-direction: column;
+    overflow-y: auto;
 
     .content-text {
       margin-bottom: 3%;
