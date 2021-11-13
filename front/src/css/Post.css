@@ -1,0 +1,142 @@
+.Post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #E8F6FF;
+}
+
+.post-container {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 89.74%;
+  height: 78.79%;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 2px 3px 3px #dadce0;
+          box-shadow: 1px 2px 3px 3px #dadce0;
+}
+
+.post-container .post-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.post-container .post-header .backIcon {
+  width: 15px;
+  height: 15px;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.post-container .post-header .hambugerIcon {
+  width: 6px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.post-container .post-postInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2%;
+  padding-left: 5%;
+}
+
+.post-container .post-postInfo .postInfo-profileImage {
+  width: 50px;
+  height: 50px;
+}
+
+.post-container .post-postInfo .postInfo-nameDateContainer {
+  margin-left: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.post-container .post-postInfo .postInfo-nameDateContainer .postInfo-username {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.post-container .post-postInfo .postInfo-nameDateContainer .postInfo-date {
+  font-size: 16px;
+  text-align: center;
+}
+
+.post-container .post-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 3% 6.5%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: auto;
+}
+
+.post-container .post-content .content-text {
+  margin-bottom: 3%;
+}
+
+.post-container .post-content .content-imageContainer {
+  width: 100%;
+  height: auto;
+}
+
+.post-container .post-content .content-imageContainer .content-image {
+  width: 100%;
+  height: auto;
+}
+
+.post-container .btnShowComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  background-color: #79ADFB;
+  width: 100%;
+  height: 9.92%;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 5px 3px 1px #dadce0;
+          box-shadow: 1px 5px 3px 1px #dadce0;
+  font-size: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.post-container .btnShowComment:active {
+  background-color: #467AC8;
+}
+/*# sourceMappingURL=Post.css.map */
