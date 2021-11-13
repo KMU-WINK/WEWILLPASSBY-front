@@ -1,5 +1,5 @@
 import react,{useState,useEffect} from "react";
-import Footer from "./Footer";
+import Footer from "../common/Footer";
 import "../../css/Post.css"
 import backIcon from "../../images/common/backIcon.png"
 import hambugerIcon from "../../images/common/hambugerIcon.png"

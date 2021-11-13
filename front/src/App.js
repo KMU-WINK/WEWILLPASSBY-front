@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import Comment from "./pages/Comment";
-import Testing from "./components/common/Post"
+import Post from "./components/post/Post"
 import Community from './pages/Community';
 
 const mainStyle = {
@@ -22,7 +22,7 @@ export default function App() {
             <Route exact path="/home" component={Home}/>
             <Route exact path="/mypage" component={MyPage}/>
             <Route exact path="/comment" component={Comment}/>
-            <Route exact path="/testing" component={Testing}/>
+            <Route exact path="/post" component={Post}/>
             <Route exact path="/community" component={Community}/>
         </Router>
     </div>
