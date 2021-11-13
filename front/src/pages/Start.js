@@ -1,9 +1,15 @@
 import React from 'react';
 import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
-
+import { authService, firebaseInstance } from "../fbase";
 import title from '../images/start/title.svg';
 import main from '../images/start/main.png';
+
+const onSocialCilck = async(event) => {
+    let provider;
+    provider = new firebaseInstance.auth.GoogleAuthProvider();
+    await authService.signInWithPopup(provider);
+};
 
 export default function Start(props) {
     return (
@@ -15,7 +21,7 @@ export default function Start(props) {
 
             <BottomWrap>
                 <KakaoButton>카카오 로그인</KakaoButton>
-                <EmailButton>이메일 로그인</EmailButton>
+                <EmailButton onClick={onSocialCilck}>이메일 로그인</EmailButton>
             </BottomWrap>
         </Wrap>
     );
