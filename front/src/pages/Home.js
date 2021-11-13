@@ -5,7 +5,7 @@ import '../css/slick-theme.css';
 import styled from 'styled-components';
 
 import Footer from "../components/common/Footer";
-import SliderItem from "../components/Home/SliderItem";
+import SliderItem from "../components/home/SliderItem";
 
 import name from "../images/home/name.svg";
 // import alarm from "../images/home/alarm.svg";
