@@ -1,8 +1,9 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import { getFirestore } from "@firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Your web app's Firebase configuration
-import {initializeApp} from "firebase/app";
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -15,9 +16,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-export const firebaseInstance = firebase; // 소셜로그인
-export const authService = firebase.auth(); // 로그인 모듈
-// export const dbService = firebase.firestore(); // NoSQL 데이터베이스
+export const fbase = initializeApp(firebaseConfig);// 소셜로그인
+// export const authService = getAuth(fbase) // 로그인 모듈
+export const dbService = getFirestore(fbase); // NoSQL 데이터베이스
 // export const storageService = firebase.storage(); // 이미지 저장 스토리지
