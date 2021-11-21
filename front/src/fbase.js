@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 // Your web app's Firebase configuration
-import {initializeApp} from "firebase/app";
+import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -15,7 +15,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const fbase = firebase.initializeApp(firebaseConfig);
+export default fbase;
 
 export const firebaseInstance = firebase; // 소셜로그인
 export const authService = firebase.auth(); // 로그인 모듈
