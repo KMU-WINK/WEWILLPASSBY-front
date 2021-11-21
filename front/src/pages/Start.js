@@ -1,5 +1,5 @@
-import React from 'react';
-import KakaoLogin from 'react-kakao-login';
+/*global Kakao*/
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { authService, firebaseInstance } from "../fbase";
 import title from '../images/start/title.svg';
@@ -12,6 +12,23 @@ const onSocialCilck = async(event) => {
 };
 
 export default function Start(props) {
+    useEffect(() => {
+        console.log(Kakao.isInitialized())
+    })
+
+    const loginWithKakao = async() => {
+        await Kakao.Auth.login({
+            throughTalk: false,
+            success: function(authObj) {
+                // console.log(authObj.access_token)
+                console.log(JSON.stringify(authObj));
+            },
+            fail: function(err) {
+                console.log(JSON.stringify(err));
+            },
+        })
+    }
+
     return (
         <Wrap>
             <TitleWrap>
@@ -20,7 +37,7 @@ export default function Start(props) {
             <MainImage/>
 
             <BottomWrap>
-                <KakaoButton>카카오 로그인</KakaoButton>
+                <KakaoButton onClick={loginWithKakao}>카카오 로그인</KakaoButton>
                 <EmailButton onClick={onSocialCilck}>이메일 로그인</EmailButton>
             </BottomWrap>
         </Wrap>
