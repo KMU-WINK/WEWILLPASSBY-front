@@ -17,12 +17,12 @@ const onSocialCilck = async(event) => {
 };
 
 export default function Start(props) {
-    // const [token, setToken] = useState("cannot fetched token");
-    const [kakaoUser, setKakaoUser] = useState({
-        token: "cannot fetched token",
-        email: "",
-        nickname: "",
-    })
+    // const [kakaoUser, setKakaoUser] = useState({
+    //     token: "cannot fetched token",
+    //     email: "",
+    //     nickname: "",
+    // })
+    localStorage.setItem('token', "cannot fetched token");
 
     useEffect(() => {
         console.log(Kakao.isInitialized())
@@ -34,7 +34,7 @@ export default function Start(props) {
             success: function(authObj) {
                 console.log(authObj.access_token)
                 // console.log(JSON.stringify(authObj));
-                // setKakaoUser({ ...kakaoUser, token: token});
+                localStorage.setItem('token', authObj.access_token);
 
                 Kakao.API.request({
                     url: "/v2/user/me",
@@ -42,12 +42,14 @@ export default function Start(props) {
                         console.log(kakao_account);
                         const { email, profile } = kakao_account;
                         const nickname = profile.nickname;
-                        const token = authObj.access_token;
+                        // const token = authObj.access_token;
 
-                        console.log(email);
-                        console.log(nickname);
-                        console.log(token);
-                        setKakaoUser({ token: token, email: email, nickname: nickname});
+                        // console.log(email);
+                        // console.log(nickname);
+                        // console.log(token);
+                        // setKakaoUser({ token: token, email: email, nickname: nickname});
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('nickname', nickname);
 
                         setKakaoLogin();
                     },
@@ -62,7 +64,7 @@ export default function Start(props) {
         })
     }
 
-    const setKakaoLogin = async() => {
+    const setKakaoLogin = async(e) => {
         const db = getFirestore(fbase);
 
         const userCol = collection(db, 'users');
@@ -70,7 +72,15 @@ export default function Start(props) {
         const userList = userSnap.docs.map(doc => doc.data());
         console.log(userList);
 
-        await setDoc(doc(db, 'users', kakaoUser.email), kakaoUser);
+        // console.log(kakaoUser);
+        console.log(localStorage.getItem('token'));
+        console.log(localStorage.getItem('email'));
+        console.log(localStorage.getItem('nickname'));
+        await setDoc(doc(db, 'users', localStorage.getItem('token')), {
+            token: localStorage.getItem('token'),
+            email: localStorage.getItem('email'),
+            nickname: localStorage.getItem('nickname')
+        });
     }
 
     return (
