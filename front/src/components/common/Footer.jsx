@@ -16,6 +16,9 @@ const footerCSS = {
     padding: '5px 0',
     fontFamily: 'Noto Sans KR',
 }
+const footerIcon = {
+    cursor: "pointer",
+}
 
 export default function Footer(props) {
 
@@ -23,19 +26,19 @@ export default function Footer(props) {
 
     return (
         <div style={footerCSS}>
-            <div onClick={() => history.push('./home')}>
+            <div onClick={() => history.push('./home')} style={footerIcon}>
                 <img src={homeIcon} alt={""}/>
                 <p>홈</p>
             </div>
-            <div>
+            <div onClick={() => history.push('./map')} style={footerIcon}>
                 <img src={mapmarkerIcon} alt={""}/>
                 <p>지도</p>
             </div>
-            <div onClick={() => history.push('./community')}>
+            <div onClick={() => history.push('./community')} style={footerIcon}>
                 <img src={communityIcon} alt={""}/>
                 <p>소통</p>
             </div>
-            <div onClick={() => history.push('./mypage')}>
+            <div onClick={() => history.push('./mypage')} style={footerIcon}>
                 <img src={mypageIcon} alt={""}/>
                 <p>정보</p>
             </div>

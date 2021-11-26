@@ -6,6 +6,7 @@ import MyPage from "./pages/MyPage";
 import Comment from "./pages/Comment";
 import Post from "./components/post/Post"
 import Community from './pages/Community';
+import Map from './pages/map';
 
 const mainStyle = {
     margin: '0 auto',
@@ -24,6 +25,7 @@ export default function App() {
             <Route exact path="/comment" component={Comment}/>
             <Route exact path="/post" component={Post}/>
             <Route exact path="/community" component={Community}/>
+            <Route exact path="/map" component={Map}/>
         </Router>
     </div>
   );
