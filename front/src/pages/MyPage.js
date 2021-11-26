@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../components/common/Footer';
 import '../css/myPage.css'
+import {fbase} from '../fbase'
+import { initializeApp } from 'firebase/app';
+import {getFirestore, collection, doc, getDocs, addDoc, setDoc} from 'firebase/firestore'
 
 import alarm from '../images/myPage/alarm.png'
 import level from '../images/myPage/level.png'
 import setting from '../images/myPage/setting.png'
 
-
-const Profile = {
-    userNickname : "홍자전거",
-    userClass : "초보따릉러",
-    userImage : null,
+const getProfile = async () => {
+    const db = getFirestore(fbase);
+    const usersCol = collection(db, 'users');
+    // const usersSnap = await getDocs(usersCol);
+    // const usersList = usersSnap.docs.map(doc => doc.data());
+    // console.log(usersList);
+  
+    const testData = {
+      email : "ghdtmdgus100@kookmin.ac.kr",
+      grade : "초보따릉러",
+      name : "홍승현",
+      nickname : "홍자전거",
+      terms : null,
+      terms_checked : null,
+      token : "",
     }
 
+
+    // await addDoc(usersCol, testData);
+    
+    await setDoc(doc(db, "users", "HongSeungHyun"), testData);
+    
+  };
+
+
+
 export default function MyPage(props) {
+    useEffect(() => {
+        getProfile();
+    });
+    
     return (
         <div className = "myPage">
             <div>
@@ -24,7 +50,7 @@ export default function MyPage(props) {
                 <div className = "test">
                     <div className = "myPage_main_menu">
                         <img src={alarm} className= "myPage_main_menu_alarm"/>
-                        <img src={setting} className= "myPage_main_menu_setting"/>
+                        <img src={setting} onClick = {sidebar} className= "myPage_main_menu_setting"/>
                     </div>
                 </div>
                 
@@ -72,3 +98,12 @@ export default function MyPage(props) {
     
 }
 
+const Profile = {
+    userNickname : "홍자전거",
+    userClass : "초보따릉러",
+    userImage : null,
+    }
+
+const sidebar = () => {
+    alert("sidebarIsOpen")
+    }
