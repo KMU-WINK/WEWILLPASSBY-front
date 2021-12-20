@@ -1,7 +1,13 @@
-import React from 'react';
-import KakaoLogin from 'react-kakao-login';
+/*global Kakao*/
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { authService, firebaseInstance } from "../fbase";
+
+import fbase from "../fbase";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, addDoc, doc, setDoc, deleteDoc } from 'firebase/firestore';
+
 import title from '../images/start/title.svg';
 import main from '../images/start/main.png';
 
@@ -12,6 +18,83 @@ const onSocialCilck = async(event) => {
 };
 
 export default function Start(props) {
+    // const [kakaoUser, setKakaoUser] = useState({
+    //     token: "cannot fetched token",
+    //     email: "",
+    //     nickname: "",
+    // })
+    const history = useHistory();
+    localStorage.setItem('token', "cannot fetched token");
+
+    useEffect(() => {
+        console.log(Kakao.isInitialized())
+    })
+
+    const loginWithKakao = async() => {
+        await Kakao.Auth.login({
+            throughTalk: false,
+            success: function(authObj) {
+                console.log(authObj.access_token)
+                // console.log(JSON.stringify(authObj));
+                localStorage.setItem('token', authObj.access_token);
+
+                Kakao.API.request({
+                    url: "/v2/user/me",
+                    success: function({ kakao_account }) {
+                        console.log(kakao_account);
+                        const { email, profile } = kakao_account;
+                        const nickname = profile.nickname;
+                        const image = profile.profile_image_url;
+                        // const token = authObj.access_token;
+
+                        // console.log(email);
+                        // console.log(nickname);
+                        // console.log(token);
+                        // setKakaoUser({ token: token, email: email, nickname: nickname});
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('nickname', nickname);
+                        localStorage.setItem('image', image);
+
+                        setKakaoLogin();
+                    },
+                    fail: function(err) {
+                        console.log(JSON.stringify(err));
+                    },
+                })
+            },
+            fail: function(err) {
+                console.log(JSON.stringify(err));
+            },
+        })
+    }
+
+    const setKakaoLogin = async(e) => {
+        const db = getFirestore(fbase);
+
+        const userCol = collection(db, 'users');
+        const userSnap = await getDocs(userCol);
+        const userList = userSnap.docs.map(doc => doc.data());
+        console.log(userList);
+
+        // console.log(kakaoUser);
+        // console.log(localStorage.getItem('token'));
+        // console.log(localStorage.getItem('email'));
+        // console.log(localStorage.getItem('nickname'));
+
+        for(var i=0; i<userList.length; i++){
+            if(userList[i].email == localStorage.getItem('email')){
+                await deleteDoc(doc(db, 'users', userList[i].token));
+            }
+        };
+        await setDoc(doc(db, 'users', localStorage.getItem('token')), {
+            token: localStorage.getItem('token'),
+            email: localStorage.getItem('email'),
+            nickname: localStorage.getItem('nickname'),
+            image: localStorage.getItem('image')
+        });
+        history.push('home');
+    }
+
     return (
         <Wrap>
             <TitleWrap>
@@ -20,7 +103,7 @@ export default function Start(props) {
             <MainImage/>
 
             <BottomWrap>
-                <KakaoButton>카카오 로그인</KakaoButton>
+                <KakaoButton onClick={loginWithKakao}>카카오 로그인</KakaoButton>
                 <EmailButton onClick={onSocialCilck}>이메일 로그인</EmailButton>
             </BottomWrap>
         </Wrap>
