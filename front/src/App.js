@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Start from "./pages/Start";
-import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import Comment from "./pages/Comment";
 import Post from "./components/post/Post"
 import Community from './pages/Community';
-import Map from './pages/map';
+import Map from './pages/Map';
 
 const mainStyle = {
     margin: '0 auto',
@@ -19,7 +18,6 @@ export default function App() {
     <div style={mainStyle}>
         <Router>
             <Route exact path="/start" component={Start}/>
-            <Route exact path="/login" component={Login}/>
             <Route exact path="/home" component={Home}/>
             <Route exact path="/mypage" component={MyPage}/>
             <Route exact path="/comment" component={Comment}/>

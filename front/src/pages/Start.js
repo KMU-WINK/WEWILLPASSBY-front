@@ -44,6 +44,7 @@ export default function Start(props) {
                         console.log(kakao_account);
                         const { email, profile } = kakao_account;
                         const nickname = profile.nickname;
+                        const image = profile.profile_image_url;
                         // const token = authObj.access_token;
 
                         // console.log(email);
@@ -52,6 +53,7 @@ export default function Start(props) {
                         // setKakaoUser({ token: token, email: email, nickname: nickname});
                         localStorage.setItem('email', email);
                         localStorage.setItem('nickname', nickname);
+                        localStorage.setItem('image', image);
 
                         setKakaoLogin();
                     },
@@ -87,7 +89,8 @@ export default function Start(props) {
         await setDoc(doc(db, 'users', localStorage.getItem('token')), {
             token: localStorage.getItem('token'),
             email: localStorage.getItem('email'),
-            nickname: localStorage.getItem('nickname')
+            nickname: localStorage.getItem('nickname'),
+            image: localStorage.getItem('image')
         });
         history.push('home');
     }
