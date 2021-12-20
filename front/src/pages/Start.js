@@ -1,11 +1,12 @@
 /*global Kakao*/
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { authService, firebaseInstance } from "../fbase";
 
 import fbase from "../fbase";
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, addDoc, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, doc, setDoc, deleteDoc } from 'firebase/firestore';
 
 import title from '../images/start/title.svg';
 import main from '../images/start/main.png';
@@ -22,6 +23,7 @@ export default function Start(props) {
     //     email: "",
     //     nickname: "",
     // })
+    const history = useHistory();
     localStorage.setItem('token', "cannot fetched token");
 
     useEffect(() => {
@@ -73,14 +75,21 @@ export default function Start(props) {
         console.log(userList);
 
         // console.log(kakaoUser);
-        console.log(localStorage.getItem('token'));
-        console.log(localStorage.getItem('email'));
-        console.log(localStorage.getItem('nickname'));
+        // console.log(localStorage.getItem('token'));
+        // console.log(localStorage.getItem('email'));
+        // console.log(localStorage.getItem('nickname'));
+
+        for(var i=0; i<userList.length; i++){
+            if(userList[i].email == localStorage.getItem('email')){
+                await deleteDoc(doc(db, 'users', userList[i].token));
+            }
+        };
         await setDoc(doc(db, 'users', localStorage.getItem('token')), {
             token: localStorage.getItem('token'),
             email: localStorage.getItem('email'),
             nickname: localStorage.getItem('nickname')
         });
+        history.push('home');
     }
 
     return (
