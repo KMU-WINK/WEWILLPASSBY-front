@@ -6,6 +6,8 @@ import Comment from "./pages/Comment";
 import Post from "./components/post/Post"
 import Community from './pages/Community';
 import Map from './pages/Map';
+import CommunityWrite from "./pages/CommunityWrite";
+import ChangeMyProfile from "./pages/ChangeMyProfile";
 
 const mainStyle = {
     margin: '0 auto',
@@ -24,6 +26,8 @@ export default function App() {
             <Route exact path="/post" component={Post}/>
             <Route exact path="/community" component={Community}/>
             <Route exact path="/map" component={Map}/>
+            <Route exact path="/communitywrite" component={CommunityWrite}/>
+            <Route exact path="/changemyprofile" component={ChangeMyProfile}/>
         </Router>
     </div>
   );

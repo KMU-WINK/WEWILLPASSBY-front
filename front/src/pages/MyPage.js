@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import Footer from '../components/common/Footer';
 import '../css/myPage.css'
 
@@ -8,6 +8,7 @@ import setting from '../images/myPage/setting.png'
 
 import fbase from "../fbase";
 import { getFirestore, getDoc, doc} from 'firebase/firestore';
+import {useHistory} from "react-router-dom";
 
 
 export default function MyPage(props) {
@@ -29,30 +30,28 @@ export default function MyPage(props) {
         // const userSnap = await getDocs(userCol);
         // const userList = userSnap.docs.map(doc => doc.data());
         // console.log(userList);
-
-        const docRef = doc(db, 'users', token);
-        const docSnap = await getDoc(docRef);
-
-        if(docSnap.exists()){
-            console.log(docSnap.data());
-            setProfile({
-                ...profile,
-                userNickname: docSnap.data().nickname,
-                userEmail: docSnap.data().email,
-                userImage: docSnap.data().image,
-            });
-        }
-        else{
-            console.log("No such document!");
-        }
+        //
+        // const docRef = doc(db, 'users', token);
+        // const docSnap = await getDoc(docRef);
+        //
+        // if(docSnap.exists()){
+        //     console.log(docSnap.data());
+        //     setProfile({
+        //         ...profile,
+        //         userNickname: docSnap.data().nickname,
+        //         userEmail: docSnap.data().email,
+        //         userImage: docSnap.data().image,
+        //     });
+        // }
+        // else{
+        //     console.log("No such document!");
+        // }
     }, [])
+
+    const history = useHistory();
 
     return (
         <div className = "myPage">
-            <div>
-
-            </div>
-
             <div className = "myPage_main">
                 <div className = "test">
                     <div className = "myPage_main_menu">
@@ -60,7 +59,6 @@ export default function MyPage(props) {
                         <img src={setting} className= "myPage_main_menu_setting"/>
                     </div>
                 </div>
-                
                 <div className ="myPage_main_profile">
                     <div className = "myPage_main_profile_me">
                         <img src={level} className= "myPage_main_profile_me_level"/>
@@ -72,8 +70,11 @@ export default function MyPage(props) {
                     <div className = "myPage_main_char">
                         <h1 className = "myPage_main_char_nickname">{profile.userNickname}</h1>
                         <h3 className = "myPage_main_char_class">{profile.userEmail}</h3>
+                        <div onClick={() => history.push('./changemyprofile')} style={{border: '1px solid gray', marginTop: '20px'}} >프로필 편집</div>
                     </div>
+
                 </div>
+
                 <div className = "myPage_main_info">
                     <div className = "myPage_main_info_service">
                         이용약관
@@ -94,7 +95,7 @@ export default function MyPage(props) {
                     <div className = "myPage_main_info_service">
                         FAQ
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -103,6 +104,6 @@ export default function MyPage(props) {
             </div>
         </div>
     );
-    
+
 }
 

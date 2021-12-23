@@ -7,7 +7,7 @@ import backIcon from "../images/common/backIcon.png";
 
 const commentBlock = {
     backgroundColor: '#E8F6FF',
-    height: '100vh',
+    height: '90vh',
     display: 'flex',
     justifyContent:'center',
     alignItems: 'center',
@@ -17,17 +17,27 @@ const popupSecction = {
     borderRadius: '15px',
     padding: '5%',
     width: '80%',
-    height: '80%',
+    height: '85%',
+}
+const commentScroll = {
+    height: '220px',
+    overflowY:'scroll',
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+    '&::-webkit-scrollbar': {
+        width: 'none',
+    }
 }
 const comments = {
     display: 'flex',
     alignItems: 'center',
     fontFamily: 'Noto Sans KR',
     fontWeight: '400',
-    height: '50px',
     fontSize: '14px',
     lineHeight: '1.4em',
     borderBottom: '1px solid rgba(128, 128, 128, 0.15)',
+    margin: '20px 0',
+    paddingBottom: '20px',
 }
 const backIconCSS = {
     width: '20px',
@@ -45,6 +55,17 @@ export default function Comment(props) {
                 <div style={popupSecction}>
                     <img src={backIcon} style={backIconCSS} onClick={() => history.goBack()}/>
                     <div>
+                        <div style={comments}>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum maiores nemo rem? Dignissimos, molestiae voluptas? Amet aperiam architecto, asperiores autem dignissimos distinctio et magni officia sed suscipit ullam veniam.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum maiores nemo rem? Dignissimos, molestiae voluptas? Amet aperiam architecto, asperiores autem dignissimos distinctio et magni officia sed suscipit ullam veniam.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum maiores nemo rem? Dignissimos, molestiae voluptas? Amet aperiam architecto, asperiores autem dignissimos distinctio et magni officia sed suscipit ullam veniam.
+                        </div>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+                        <span>Comments</span>
+                        <span style={{fontSize: '12px', cursor: 'pointer'}}  onClick={() => history.push('./comment')} >더보기</span>
+                    </div>
+                    <div style={commentScroll}>
                         <div style={comments}>
                             우와 여기는 어디에요 ?
                         </div>
